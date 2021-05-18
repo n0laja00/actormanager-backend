@@ -265,6 +265,9 @@ CREATE TABLE STATBLOCKVMSKILL(
 INSERT INTO GAME (name, ruleSet, description) VALUES ("Vampire the Masquerade: Belgium Ball", "Vampire Masquerade 5th edition", 
 "In the heart of the European Union there's a world of darkness and intrigue.");
 
+INSERT INTO GAME (name, ruleSet, description) VALUES ("dummy", "Dummy set", 
+"this is a dummy game");
+
 INSERT INTO WORLD (name, description, gameId) VALUES ("Earth", "A very nice place, most of the time.", 1);
 
 INSERT INTO CONTINENT (name, description, worldId) VALUES ("Europe", "Also known as civilisation", 1);
