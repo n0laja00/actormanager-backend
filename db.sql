@@ -13,9 +13,7 @@ Create Table GAME(
 Create Table WORLD(
 	id  int auto_increment primary key,
 	name varchar(50),
-	description text,
-	gameId int,
-	foreign key (gameId) REFERENCES game(id)
+	description text
 );
 
 Create Table CONTINENT(
@@ -70,7 +68,21 @@ Create Table ACTOR(
 	inventory int
 );
 
+Create Table ACTORGROUP(
+	id  int auto_increment primary key,
+	actorId int, 
+	gameId int,
+	foreign key (gameId) REFERENCES game(id),
+	foreign key (actorId) REFERENCES actor(id)
+);
 
+Create Table GAMEWORLD(
+	id  int auto_increment primary key,
+	worldId int, 
+	gameId int,
+	foreign key (gameId) REFERENCES game(id),
+	foreign key (worldId) REFERENCES world(id)
+);
 
 create table DISCIPLINEGROUPVM(
 	id  int auto_increment primary key,	
@@ -268,7 +280,7 @@ INSERT INTO GAME (name, ruleSet, description) VALUES ("Vampire the Masquerade: B
 INSERT INTO GAME (name, ruleSet, description) VALUES ("dummy", "Dummy set", 
 "this is a dummy game");
 
-INSERT INTO WORLD (name, description, gameId) VALUES ("Earth", "A very nice place, most of the time.", 1);
+INSERT INTO WORLD (name, description) VALUES ("Earth", "A very nice place, most of the time.");
 
 INSERT INTO CONTINENT (name, description, worldId) VALUES ("Europe", "Also known as civilisation", 1);
 
@@ -294,6 +306,10 @@ The Mad Russian’s mafia, known as ‘Eastern Wolves,’ has been on the scene 
 INSERT INTO POWER (name, description, powerLevel) Values ("Independent MotherF'er", "He does what he wants", 10);
 
 INSERT INTO POWER (name, description, powerLevel) Values ("Mafiaso", "He leads the Eastern Wolves", 100);
+
+INSERT INTO ACTORGROUP (gameId, actorId) VALUES (1,1);
+
+INSERT INTO GAMEWORLD (gameId, worldId) VALUES (1,1);
 
 INSERT INTO POWERPYRAMID (organisationId, actorId, powerId) VALUES (2, 1, 1);
 
